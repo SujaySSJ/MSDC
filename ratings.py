@@ -1,39 +1,11 @@
 import threading
 import time
 
-
 def entry_to_list(line):
 	triplet_list=[]
 	triplet_list=line.split('\t')
 	triplet_list[2]=triplet_list[2].split('\n')[0]
 	return triplet_list
-
-
-# class mythread(threading.Thread):
-# 	def __init__(self,id,name):
-# 		threading.Thread.__init__(self)
-# 		self.id=id
-# 		self.name=name
-
-# 	def run(self):
-# 		count=100000
-# 		while(True):
-# 			# if(count%100==0):
-# 			# 	time.sleep(2)
-# 			print(self.name,count)
-# 			count-=1
-
-
-# thread1=mythread(1,"thread1")
-# thread1.start()
-
-
-# # thread2=mythread(2,"thread2")
-
-# count =1000000
-# while(count>0):
-# 	print("main thread",count)
-# 	count-=1
 
 min_dict={}
 max_dict={}
@@ -60,6 +32,7 @@ class compute_thread(threading.Thread):
 					max_val=(int)(max_dict[triplet[0]])
 					break
 				except:
+					print("stuck here!")
 					continue
 			rating=(5)/(max_val-min_val)*((int)(triplet[2])-max_val)+5
 			t_new_main.write("{}\t{}\t{}\t{}\t\n".format(triplet[0],triplet[1],triplet[2],rating))
@@ -100,12 +73,5 @@ while(count>0):
 	print("main_thread upto",count)
 	count-=1
 
-
-
-# print(triplet)
-
-# print(min_dict)
-# print(max_dict)
-# thread1.join()
 computer.join()
 print("main thread exit!")
