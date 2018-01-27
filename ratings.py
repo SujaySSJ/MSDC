@@ -28,13 +28,15 @@ class compute_thread(threading.Thread):
 			triplet=entry_to_list(t_main.readline())
 			while(True):
 				try:
+					if(triplet[0]=="70000"):
+						break
 					min_val=(int)(min_dict[triplet[0]])
 					max_val=(int)(max_dict[triplet[0]])
 					break
 				except:
 					print("stuck here!")
 					continue
-			rating=(5)/(max_val-min_val)*((int)(triplet[2])-max_val)+5
+			rating=(4)/(max_val-min_val)*((int)(triplet[2])-max_val)+5
 			t_new_main.write("{}\t{}\t{}\t{}\t\n".format(triplet[0],triplet[1],triplet[2],rating))
 			print("Computer thread upto",count)
 			count-=1
@@ -44,7 +46,7 @@ computer.start()
 
 
 main=open(db_path,"r")
-count=12120030
+count=12120031
 def max(a,b):
 	if(a>b):
 		return a
