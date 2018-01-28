@@ -84,7 +84,7 @@ def learnFeatures(user_pref_matrix,song_feat_matrix,steps=10000,error_conv=0.001
 
 start_time=time.time()
 
-user_pref_matrix,song_feat_matrix=learnFeatures(user_pref_matrix,song_feat_matrix,steps=1)
+user_pref_matrix,song_feat_matrix=learnFeatures(user_pref_matrix,song_feat_matrix)
 
 total_time=time.time()-start_time
 
